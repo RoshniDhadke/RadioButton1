@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Views</string>
+    <string name="text">i am textView click on me</string>
+    <string name="toast">Hello Roshni</string>
+</resources>
