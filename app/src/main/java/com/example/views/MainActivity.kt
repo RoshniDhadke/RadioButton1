@@ -1,40 +1,80 @@
 package com.example.views
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import android.widget.Toast.makeText
+import kotlin.math.tanh
 
 class MainActivity : AppCompatActivity() {
-    lateinit var tv:TextView
-    lateinit var button:Button
+    var fn:EditText?=null
+    var ln:EditText?=null
+    var ea:EditText?=null
+    var pd:EditText?=null
+    var cancelbtn:Button?=null
+    var proceedbtn:Button?=null
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-    tv=findViewById(R.id.tv)
-    button=findViewById(R.id.one)
- /*    button.setOnClickListener {
-    Edittext
-}*/
+
+        fn = findViewById(R.id.fn)
+        ln = findViewById(R.id.ln)
+        ea = findViewById(R.id.ea)
+        pd = findViewById(R.id.pd)
+        cancelbtn = findViewById(R.id.cancelbtn)
+        proceedbtn = findViewById(R.id.proceedbtn)
+
+        proceedbtn?.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View?) {
+                CheckFields()
+
+            }
+
+        })
+
+        cancelbtn!!.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(p0: View?) {
+                finish()
+                System.exit(0)
+            }
+        })
     }
 
-    @SuppressLint("SetTextI18n")
-    fun onClick1(view: View) {
-      tv.text=tv.text.toString()  + "1"
+        fun CheckFields(): Boolean {
+            if (fn!!.length()==0) {
+                fn!!.error = "This field is required"
+                return true
+            }
+            if(ln!!.length()==0){
+                ln!!.error="This fied is required"
+                return true
+            }
+            if(ea!!.length()==0){
+                ea!!.error="This fied is required"
+                return true
+            }
+            if(pd!!.length()==0){
+                pd!!.error="This fied is required"
+                return true
+            }
+            return true
+        }
     }
-    fun onClick2(view: View) {tv.text=tv.text.toString()  + "2"}
-    fun onClick3(view: View) {tv.text=tv.text.toString()  + "3"}
-    fun onClick4(view: View) {tv.text=tv.text.toString()  + "4"}
-    fun onClick5(view: View) {tv.text=tv.text.toString()  + "5"}
-    fun onClick6(view: View) {tv.text=tv.text.toString()  + "6"}
-    fun onClick7(view: View) {tv.text=tv.text.toString()  + "7"}
-    fun onClick8(view: View) {tv.text=tv.text.toString()  + "8"}
-    fun onClick9(view: View) {tv.text=tv.text.toString()  + "9"}
-    fun onClick0(view: View) {tv.text=tv.text.toString()  + "0"}
 
 
-}
+
+
+
+
+
+
